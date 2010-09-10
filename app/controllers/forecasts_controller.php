@@ -9,6 +9,27 @@ class ForecastsController extends AppController {
 		$this->set('forecasts', $this->paginate());
 	}
 
+	function today()
+	{
+		#displays today's predictions of tomorrow's weather
+		$forecasts = $this->Forecast->find('all',array('conditions' => array('day' => date('Y-m-d',Forecast::next_forecast('start')))));
+		$groups = $this->Forecast->Group->find('all');
+		
+		$this->set(compact('groups','forecasts'));
+	}
+
+	function show_points($day)
+	{
+		$forecasts = $this->Forecast->find('all',array('conditions'=>array('Forecast.day' => $day)));
+		foreach($forecasts as $key => $forecast)
+		{
+			$forecasts[$key] = $this->Forecast->points($forecast);
+		}
+		$this->set(compact('forecasts'));
+	}
+
+
+
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid Forecast', true));
@@ -18,6 +39,7 @@ class ForecastsController extends AppController {
 	}
 
 	function add() {
+		
 		if (!empty($this->data)) {
 			$this->Forecast->create();
 			if ($this->Forecast->save($this->data)) {
@@ -29,6 +51,11 @@ class ForecastsController extends AppController {
 		}
 		$groups = $this->Forecast->Group->find('list');
 		$this->set(compact('groups'));
+	}
+
+	function add_actual()
+	{
+		
 	}
 
 	function edit($id = null) {

@@ -27,7 +27,7 @@
 
 /* General Style Info */
 body {
-	background: #003d4c;
+	background: #292421;
 	color: #fff;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:90%;
@@ -108,6 +108,7 @@ ul, li {
 	clear: both;
 	color: #333;
 	padding: 10px 20px 40px 20px;
+	margin-top: 100px;
 	overflow: auto;
 }
 #footer {
@@ -475,4 +476,69 @@ div.code-coverage-results span.result-ok {
 }
 div.code-coverage-results span.result-good {
 	color: #0a0;
+}
+.missing {
+	background-color: #a00;
+	color: #fff;
+	}
+div.points {
+	font-size: 60%;
+	float: right;
+	}
+.five, .four {
+	background-color: #0f0;
+}
+.three {
+	background-color: #8f0;
+}
+.two {
+	background-color: #ad0;
+}
+.one {
+	background-color: #dd0;
+}
+.zero {
+	background-color: #ff0;
+}
+.minusone {
+	background-color: #fa0;
+}
+.minustwo {
+	background-color: #f50;
+}
+.minusthree {
+	background-color: #f00;
+}
+div.group {
+	width: 15em;
+	float: left;
+	margin: 1em;
+	border: solid 1px #186f4d; 
+}
+div.group h4 {
+	width: 100%;
+	background-color: #186f4d; 
+	color: #fff;
+}	
+div.group h5 {
+	width: 100%;
+	color: #555;
+	text-align: right;
+}	
+div.groupsindex {
+	width: 60em;
+}
+div#logo {
+background:url("/templates/rhuk_milkyway/images/mw_joomla_logo.png") no-repeat scroll 0 0 transparent;
+float:left;
+height:75px;
+left:0;
+margin-left:30px;
+margin-top:25px;
+position:absolute;
+top:0;
+}
+div#logo h3 {
+	padding-left: 400px;
+	color: #ccc;
 }

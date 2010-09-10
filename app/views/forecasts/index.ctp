@@ -9,7 +9,7 @@ echo $paginator->counter(array(
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo $paginator->sort('group_id');?></th>
-	<th><?php echo $paginator->sort('day');?></th>
+	<th>Starts 1800 on <?php echo $paginator->sort('day');?></th>
 	<th><?php echo $paginator->sort('min_temp');?>°C</th>
 	<th><?php echo $paginator->sort('max_temp');?>°C</th>
 	<th><?php echo $paginator->sort('total_rainfall');?>mm</th>
@@ -48,7 +48,6 @@ foreach ($forecasts as $forecast):
 			<?php echo $forecast['Forecast']['wind_speed']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action' => 'view', $forecast['Forecast']['id'])); ?>
 			<?php echo $html->link(__('Edit', true), array('action' => 'edit', $forecast['Forecast']['id'])); ?>
 			<?php echo $html->link(__('Delete', true), array('action' => 'delete', $forecast['Forecast']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $forecast['Forecast']['id'])); ?>
 		</td>
@@ -63,8 +62,7 @@ foreach ($forecasts as $forecast):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Forecast', true), array('action' => 'add')); ?></li>
-		<li><?php echo $html->link(__('List Groups', true), array('controller' => 'groups', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Group', true), array('controller' => 'groups', 'action' => 'add')); ?> </li>
+		<li><?php echo $html->link(__('Add Forecast', true), array('action' => 'add')); ?></li>
+		<li><?php echo $html->link(__('Group Summary', true), array('controller' => 'groups', 'action' => 'index')); ?> </li>
 	</ul>
 </div>

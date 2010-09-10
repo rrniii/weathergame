@@ -1,9 +1,10 @@
 <div class="forecasts form">
 <?php echo $form->create('Forecast');?>
 	<fieldset>
- 		<legend><?php __('Add Forecast for '.Forecast::next_forecast('human_readable')); ?></legend>
+ 		<legend><?php __('Add Readings'); ?></legend>
 	<?php
-		echo $form->input('group_id');
+		echo $form->input('group_id',array('type'=>'hidden','value' => 10)); #Actual group
+		echo $form->input('day',array('label' => 'Starts at 18:00 on'));
 		echo $form->input('min_temp',array('after' => '°C, to nearest 0.1°'));
 		echo $form->input('max_temp', array('after' => '°C, to nearest 0.1°'));
 		echo $form->input('total_rainfall', array('after' => 'mm, to nearest whole mm'));
