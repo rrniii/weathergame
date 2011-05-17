@@ -25,7 +25,14 @@ class ForecastsController extends AppController {
 		{
 			$forecasts[$key] = $this->Forecast->points($forecast);
 		}
+		#sort by total points
+		uasort($forecasts, array($this,'cmp'));
 		$this->set(compact('forecasts'));
+	}
+
+	private function cmp($a, $b) 
+	{
+    		return ($b['Forecast']['total_points'] - $a['Forecast']['total_points']);
 	}
 
 
