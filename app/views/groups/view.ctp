@@ -36,7 +36,6 @@
 		<th><?php __('Total Rainfall'); ?></th>
 		<th><?php __('Wind Direction'); ?></th>
 		<th><?php __('Wind Speed'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
 		$i = 0;
@@ -55,11 +54,6 @@
 			<td><?php echo $forecast['total_rainfall'];?></td>
 			<td><?php echo $forecast['wind_direction'];?></td>
 			<td><?php echo $forecast['wind_speed'];?></td>
-			<td class="actions">
-				<?php echo $html->link(__('View', true), array('controller' => 'forecasts', 'action' => 'view', $forecast['id'])); ?>
-				<?php echo $html->link(__('Edit', true), array('controller' => 'forecasts', 'action' => 'edit', $forecast['id'])); ?>
-				<?php echo $html->link(__('Delete', true), array('controller' => 'forecasts', 'action' => 'delete', $forecast['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $forecast['id'])); ?>
-			</td>
 		</tr>
 	<?php endforeach; ?>
 	</table>

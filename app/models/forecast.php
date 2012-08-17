@@ -214,17 +214,17 @@ class Forecast extends AppModel {
 	static function next_forecast($what)
 	{
 		$next_forecast = array();
-		if(date('H') > 17)
+		if(date('H') > 18)
 		{
 			#it's evening so 1800 the following day
-			$next_forecast['start'] = strtotime('tomorrow 18:00');
-			$next_forecast['end'] = strtotime('+2 days 18:00');
+			$next_forecast['start'] = strtotime('tomorrow 19:00');
+			$next_forecast['end'] = strtotime('+2 days 19:00');
 		}
 		else
 		{
 			#during the day
-			$next_forecast['start'] = strtotime('18:00');
-			$next_forecast['end'] = strtotime('tomorrow 18:00');
+			$next_forecast['start'] = strtotime('19:00');
+			$next_forecast['end'] = strtotime('tomorrow 19:00');
 		}
 		$next_forecast['human_readable'] = date('H:i l jS F',$next_forecast['start']).' to '.date('H:i l jS F',$next_forecast['end']);
 		return $next_forecast[$what];

@@ -15,7 +15,6 @@ echo $paginator->counter(array(
 	<th><?php echo $paginator->sort('total_rainfall');?>mm</th>
 	<th><?php echo $paginator->sort('wind_direction');?>°</th>
 	<th><?php echo $paginator->sort('wind_speed');?>ms<sup><small>-1</small></sup></th>
-	<th class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
 $i = 0;
@@ -46,10 +45,6 @@ foreach ($forecasts as $forecast):
 		</td>
 		<td>
 			<?php echo $forecast['Forecast']['wind_speed']; ?>
-		</td>
-		<td class="actions">
-			<?php echo $html->link(__('Edit', true), array('action' => 'edit', $forecast['Forecast']['id'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action' => 'delete', $forecast['Forecast']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $forecast['Forecast']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
