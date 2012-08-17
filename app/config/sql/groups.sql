@@ -15,28 +15,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE DATABASE IF NOT EXISTS `measurements` CHARACTER SET utf8;
-USE `measurements`;
---
--- Table structure for table `forecasts`
---
-
-DROP TABLE IF EXISTS `forecasts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `forecasts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `group_id` int(11) DEFAULT NULL,
-  `day` date DEFAULT NULL,
-  `min_temp` decimal(5,1) DEFAULT NULL,
-  `max_temp` decimal(5,1) DEFAULT NULL,
-  `total_rainfall` int(11) DEFAULT NULL,
-  `wind_direction` int(11) DEFAULT NULL,
-  `wind_speed` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
 --
 -- Table structure for table `groups`
 --
@@ -50,6 +28,16 @@ CREATE TABLE `groups` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groups`
+--
+
+LOCK TABLES `groups` WRITE;
+/*!40000 ALTER TABLE `groups` DISABLE KEYS */;
+INSERT INTO `groups` VALUES (1,'Cumulus'),(2,'Cirrus'),(3,'Cumulonimbus'),(4,'Stratus'),(5,'Lenticular'),(6,'BBC'),(7,'WRF'),(8,'Staff'),(10,'Actual'),(11,'MysteryTechniqueA'),(12,'MysteryTechniqueB'),(13,'Extreme weather');
+/*!40000 ALTER TABLE `groups` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -60,7 +48,4 @@ CREATE TABLE `groups` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-08-17 15:45:44
-
-GRANT ALL ON measurements.* TO measure@localhost IDENTIFIED BY '4measure';
-FLUSH PRIVILEGES;
+-- Dump completed on 2012-08-17 16:05:32
