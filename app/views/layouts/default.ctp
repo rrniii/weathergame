@@ -26,7 +26,7 @@
 <head>
 	<?php echo $html->charset(); ?>
 	<title>
-		<?php __('NCAS Arran 2010 Atmospheric Science Summer School'); ?>
+		<?php __('NCAS Arran '.date('Y').' Atmospheric Science Summer School'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
