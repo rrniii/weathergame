@@ -33,14 +33,16 @@
 		echo $html->meta('icon');
 
 		echo $html->css('cake.generic');
-
+   ?>
+   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css' />
+   <?
 		echo $scripts_for_layout;
 	?>
 </head>
 <body>
 	<div id="container">
 		<div id="logo">
-		<h3>Weather Forecasting Challege</h3>
+		<h3>Weather Forecasting Challenge</h3>
 		</div>
 		<div id="content">
 

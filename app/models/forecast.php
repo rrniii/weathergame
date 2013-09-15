@@ -226,7 +226,7 @@ class Forecast extends AppModel {
 			$next_forecast['start'] = strtotime('19:00');
 			$next_forecast['end'] = strtotime('tomorrow 19:00');
 		}
-		$next_forecast['human_readable'] = date('H:i l jS F',$next_forecast['start']).' to '.date('H:i l jS F',$next_forecast['end']);
+		$next_forecast['human_readable'] = date('H:i l jS F',$next_forecast['start']).' to '.date('H:i l jS F',$next_forecast['end']).' (BST)';
 		return $next_forecast[$what];
 	}
 	static function points_words($points)

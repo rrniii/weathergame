@@ -29,7 +29,7 @@
 body {
 	background: #292421;
 	color: #fff;
-	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
+	font-family:'Lato','lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:90%;
 	margin: 0;
 }
@@ -59,14 +59,14 @@ h1 {
 h2 {
 	background:#fff;
 	color: #e32;
-	font-family:'Gill Sans','lucida grande',helvetica, arial, sans-serif;
+	font-family:'Gill Sans','Lato','lucida grande',helvetica, arial, sans-serif;
 	font-size: 190%;
 	margin: 0.3em 0;
 	padding-top: 0.8em;
 }
 h3 {
 	color: #993;
-	font-family:'Gill Sans','lucida grande',helvetica, arial, sans-serif;
+	font-family:'Gill Sans','Lato','lucida grande',helvetica, arial, sans-serif;
 	font-size: 165%;
 	padding-top: 1.5em;
 }
@@ -529,12 +529,12 @@ div.groupsindex {
 	width: 60em;
 }
 div#logo {
-background:url("/templates/rhuk_milkyway/images/mw_joomla_logo.png") no-repeat scroll 0 0 transparent;
+background:url("/measurements/img/9-transparent-ncas-logo-png") no-repeat scroll 0 0 transparent;
 float:left;
 height:75px;
 left:0;
 margin-left:30px;
-margin-top:25px;
+margin-top:20px;
 position:absolute;
 top:0;
 }

@@ -9,7 +9,7 @@ echo $paginator->counter(array(
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo $paginator->sort('group_id');?></th>
-	<th>Starts 1800 on <?php echo $paginator->sort('day');?></th>
+	<th>Starts 1800 UTC on <?php echo $paginator->sort('day');?></th>
 	<th><?php echo $paginator->sort('min_temp');?>°C</th>
 	<th><?php echo $paginator->sort('max_temp');?>°C</th>
 	<th><?php echo $paginator->sort('total_rainfall');?>mm</th>

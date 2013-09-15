@@ -35,7 +35,7 @@ CREATE TABLE `groups` (
 
 LOCK TABLES `groups` WRITE;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
-INSERT INTO `groups` VALUES (1,'Cumulus'),(2,'Cirrus'),(3,'Cumulonimbus'),(4,'Stratus'),(5,'Lenticular'),(6,'BBC'),(7,'WRF'),(8,'Staff'),(10,'Actual'),(11,'MysteryTechniqueA'),(12,'MysteryTechniqueB'),(13,'Extreme weather');
+INSERT INTO `groups` VALUES (1,'Cumulus'),(2,'Cirrus'),(3,'Cumulonimbus'),(4,'Stratus'),(5,'Lenticular'),(6,'BBC'),(7,'WRF'),(8,'Staff'),(10,'Actual');
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
