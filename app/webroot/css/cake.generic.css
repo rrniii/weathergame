@@ -34,14 +34,14 @@ body {
 	margin: 0;
 }
 a {
-	background:#fff;
+	background:transparent;
 	color: #003d4c;
 	text-decoration: underline;
 	font-weight: bold;
 }
 a:hover {
-	background:#fff;
-	color: #003d4c;
+	background:transparent;
+	color: #008d9c;
 	text-decoration:none;
 }
 a img {
@@ -514,6 +514,12 @@ div.group {
 	float: left;
 	margin: 1em;
 	border: solid 1px #186f4d; 
+}
+div.group a {
+   color: #fff;
+}
+div.group a:hover {
+	color: #008d9c;
 }
 div.group h4 {
 	width: 100%;

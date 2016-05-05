@@ -5,7 +5,7 @@ foreach ($groups as $group):
 ?>
 	<div class="group">
 		<h4>
-			<?php echo $group['Group']['name']; ?>
+			<?php echo $html->link($group['Group']['name'],array('controller' => 'groups', 'action' => 'edit', $group['Group']['id'])); ?>
 		</h4>
 		<p><ul>
 		<?php foreach($group['Forecast'] as $forecast)

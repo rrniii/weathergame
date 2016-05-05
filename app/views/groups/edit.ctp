@@ -1,10 +1,12 @@
 <div class="groups form">
 <?php echo $form->create('Group');?>
 	<fieldset>
- 		<legend><?php __('Edit Group');?></legend>
+ 		<legend><?php __('Edit Group');?> <?php echo $this->data['Group']['name']; ?></legend>
 	<?php
 		echo $form->input('id');
-		echo $form->input('name');
+      echo $form->input('hydrostatic_height',array('after' => 'm'));
+      echo $form->input('gps_height', array('after' => 'm','label' => 'GPS Height'));
+      echo $form->input('theodolite_height',array('after' => 'm'));
 	?>
 	</fieldset>
 <?php echo $form->end('Submit');?>

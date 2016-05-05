@@ -2,6 +2,7 @@
 class Forecast extends AppModel {
 
 	var $name = 'Forecast';
+   var $order = 'Forecast.day DESC';
 
 	var $validate = array(
 		'min_temp' => array(	'rule' => array('decimal',1),
