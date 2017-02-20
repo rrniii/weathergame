@@ -515,7 +515,7 @@ div.group {
 	margin: 1em;
 	border: solid 1px #186f4d; 
 }
-div.group a {
+div.group h4 a {
    color: #fff;
 }
 div.group a:hover {
