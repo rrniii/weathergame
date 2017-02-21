@@ -16,6 +16,6 @@
 ?></tbody></table>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Group Summary', true), array('controller' => 'groups', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Group Summary'), array('controller' => 'groups', 'action' => 'index')); ?> </li>
 	</ul>
 </div>

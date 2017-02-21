@@ -91,10 +91,10 @@ if (isset($corePath[0])) {
 	define('TEST_CAKE_CORE_INCLUDE_PATH', CAKE_CORE_INCLUDE_PATH);
 }
 
-require_once CAKE_TESTS_LIB . 'test_manager.php';
+require_once CAKE . 'TestSuite' . DS . 'test_manager.php';
 
 if (Configure::read('debug') < 1) {
-	die(__('Debug setting does not allow access to this url.', true));
+	die(__('Debug setting does not allow access to this url.'));
 }
 
 if (!isset($_SERVER['SERVER_NAME'])) {
@@ -119,7 +119,7 @@ if (isset($_GET['output']) && $_GET['output'] == 'html') {
 
 if (!App::import('Vendor', 'simpletest' . DS . 'reporter')) {
 	CakePHPTestHeader();
-	include CAKE_TESTS_LIB . 'simpletest.php';
+	include CAKE . 'TestSuite' . DS . 'simpletest.php';
 	CakePHPTestSuiteFooter();
 	exit();
 }
@@ -127,10 +127,10 @@ if (!App::import('Vendor', 'simpletest' . DS . 'reporter')) {
 $analyzeCodeCoverage = false;
 if (isset($_GET['code_coverage'])) {
 	$analyzeCodeCoverage = true;
-	require_once CAKE_TESTS_LIB . 'code_coverage_manager.php';
+	require_once CAKE . 'TestSuite' . DS . 'code_coverage_manager.php';
 	if (!extension_loaded('xdebug')) {
 		CakePHPTestHeader();
-		include CAKE_TESTS_LIB . 'xdebug.php';
+		include CAKE . 'TestSuite' . DS . 'xdebug.php';
 		CakePHPTestSuiteFooter();
 		exit();
 	}
