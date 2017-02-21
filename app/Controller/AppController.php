@@ -33,6 +33,7 @@
  * @package       cake
  * @subpackage    cake.app
  */
+App::uses('Controller', 'Controller');
 class AppController extends Controller {
 }
 ?>

@@ -42,7 +42,7 @@
  *		db2			- IBM DB2, Cloudscape, and Apache Derby (http://php.net/ibm-db2)
  *		oracle		- Oracle 8 and higher
  *		firebird	- Firebird/Interbase
- *		sybase		- Sybase ASE
+ 		sybase		- Sybase ASE
  *		adodb-[drivername]	- ADOdb interface wrapper (see below),
  *		odbc		- ODBC DBO driver
  *
@@ -77,24 +77,26 @@
  */
 class DATABASE_CONFIG {
 
-	var $default = array(
-		'driver' => 'mysql',
+	public $default = array(
+		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'measure',
 		'password' => '4measure',
 		'database' => 'measurements',
 		'prefix' => '',
+      'encoding' => 'utf8'
 	);
 
-	var $test = array(
-		'driver' => 'mysql',
+	public $test = array(
+		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'user',
 		'password' => 'password',
 		'database' => 'test_database_name',
 		'prefix' => '',
+      'encoding' => 'utf8'
 	);
 }
 ?>

@@ -60,6 +60,6 @@
 			?>
 		</div>
 	</div>
-	<?php echo $cakeDebug; ?>
+	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>
