@@ -65,7 +65,7 @@ class ForecastsController extends AppController {
 		
 	}
 
-	function edit($id = null) {
+	function admin_edit($id = null) {
 		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Forecast'));
 			return $this->redirect(array('action' => 'index'));
@@ -73,7 +73,7 @@ class ForecastsController extends AppController {
 		if (!empty($this->request->data)) {
 			if ($this->Forecast->save($this->request->data)) {
 				$this->Session->setFlash(__('The Forecast has been saved'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'index', 'admin' => false));
 			} else {
 				$this->Session->setFlash(__('The Forecast could not be saved. Please, try again.'));
 			}
