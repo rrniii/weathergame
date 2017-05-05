@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.1.46, for suse-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.1.73, for redhat-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: measurements
 -- ------------------------------------------------------
--- Server version	5.1.46-log
+-- Server version	5.1.73-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -15,8 +15,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE DATABASE IF NOT EXISTS `measurements` CHARACTER SET utf8;
-USE `measurements`;
 --
 -- Table structure for table `forecasts`
 --
@@ -30,11 +28,11 @@ CREATE TABLE `forecasts` (
   `day` date DEFAULT NULL,
   `min_temp` decimal(5,1) DEFAULT NULL,
   `max_temp` decimal(5,1) DEFAULT NULL,
-  `total_rainfall` int(11) DEFAULT NULL,
+  `total_rainfall` float DEFAULT NULL,
   `wind_direction` int(11) DEFAULT NULL,
   `wind_speed` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,8 +45,11 @@ DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` tinytext,
+  `hydrostatic_height` float DEFAULT NULL,
+  `gps_height` float DEFAULT NULL,
+  `theodolite_height` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -60,7 +61,4 @@ CREATE TABLE `groups` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-08-17 15:45:44
-
-GRANT ALL ON measurements.* TO measure@localhost IDENTIFIED BY '4measure';
-FLUSH PRIVILEGES;
+-- Dump completed on 2017-05-05 14:22:18
