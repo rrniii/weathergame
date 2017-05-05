@@ -1,0 +1,6 @@
+AuthName "Admin"
+AuthType Basic
+AuthBasicProvider file
+AuthUserFile /var/www/html/measurements/.htpasswd
+AuthGroupFile /dev/null
+require valid-user
