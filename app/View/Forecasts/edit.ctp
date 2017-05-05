@@ -1,15 +1,11 @@
 <div class="forecasts form">
 <?php echo $this->Form->create('Forecast');?>
 	<fieldset>
- 		<legend><?php echo __('Edit Forecast for '.date('l, jS F Y', strtotime('tomorrow')));?></legend>
+ 		<legend><?php echo __('Edit Forecast for '.date('l, jS F Y', strtotime($this->data['Forecast']['day']) + 86400));?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('group_id');
-		echo $this->Form->input('min_temp');
-		echo $this->Form->input('max_temp');
-		echo $this->Form->input('total_rainfall');
-		echo $this->Form->input('wind_direction');
-		echo $this->Form->input('wind_speed');
+      echo $this->element('forecast_form');
 	?>
 	</fieldset>
 <?php echo $this->Form->end('Submit');?>

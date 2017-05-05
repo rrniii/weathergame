@@ -6,14 +6,14 @@ class Forecast extends AppModel {
 
 	var $validate = array(
 		'min_temp' => array(	'rule' => array('decimal',1),
-					'message' => 'Must be numeric, to nearest 0.1°C'
+					'message' => 'Must be numeric, to nearest 0.5°C'
 					),
 		'max_temp' => array(	'rule' => array('decimal',1),
-					'message' => 'Must be numeric, to nearest 0.1°C'
+					'message' => 'Must be numeric, to nearest 0.5°C'
 					),
 		'total_rainfall' => array (	'ruleOne' => array(
-							'rule' => array('comparison', '>=', 0),
-							'message' => 'Must be integer greater than or equal to 0',),
+                     'rule' => '/^[0-9]*.[05]/',
+					      'message' => 'Must be numeric, to nearest 0.5mm'),
 						'ruleTwo' => array(
 							'rule'=> array('minlength',1),
 							'message' => 'Cannot be left blank',
@@ -160,22 +160,22 @@ class Forecast extends AppModel {
 		$abs_diff =abs(($actual + 180 -  $predicted) % 360 - 180);
 		$diff = min($abs_diff, 360 - $abs_diff);
 		$points = -2;
-		if( $diff <= 60) {
+		if( $diff <= 90) {
 			$points = -1;
 			}
-		if( $diff <= 50) {
+		if( $diff <= 65) {
 			$points = 0;
 			}
-		if( $diff <= 40) {
+		if( $diff <= 45) {
 			$points = 1;
 			}
-		if( $diff <= 30) {
+		if( $diff <= 35) {
 			$points = 2;
 			}
-		if( $diff <= 20) {
+		if( $diff <= 27.5) {
 			$points = 3;
 		}
-		if( $diff <= 10) {
+		if( $diff <= 22.5) {
 			$points = 4;
 		}
 	
