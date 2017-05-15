@@ -14,4 +14,4 @@ SQL1="SELECT ROUND(Min((OutTemp - 32.0) * (5.0/9.0)),1) AS MinTemp, ROUND(MAX((O
 #SQL2="SELECT CAST(ROUND(windDir,0) AS integer), CAST(ROUND(windSpeed * 0.447027) AS integer) FROM archive WHERE DATETIME(dateTime,'unixepoch') = '${END} 12:00:00';"
 PROCTOWERFILE="/data/shareddata/tower/Proc/001w/wind-temp-rh-001-${END}.csv"
 WIND=( $(cat $PROCTOWERFILE | grep "$END 12:00:00" | awk -F ',' '{print "/var/www/html/measurements/scripts/polar.py " $2" " $3}' | bash) )
-sqlite3 $DAVISDBFILE "${SQL1}" | tr '\n' '|' | awk -F '|' '{print "INSERT INTO forecasts (day, group_id, min_temp, max_temp, total_rainfall, wind_direction, wind_speed) VALUES (\"'${START}'\", 10, "$1", "$2", "$3", '${WIND[1]}', '${WIND[0]}' );"}' | mysql -umeasure -p4measure measurements
+sqlite3 $DAVISDBFILE "${SQL1}" | tr '\n' '|' | awk -F '|' '{print "INSERT INTO forecasts (day, group_id, min_temp, max_temp, total_rainfall, wind_direction, wind_speed) VALUES (\"'${START}'\", 10, "$1", "$2", "$3", '${WIND[1]}', '${WIND[0]}' );"}' #| mysql -umeasure -p4measure measurements

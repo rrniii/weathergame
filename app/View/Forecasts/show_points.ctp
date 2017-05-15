@@ -1,4 +1,4 @@
-<h3>Points</h3>
+<h3>Points for <?php echo $day; ?></h3>
 <table><tbody><tr><th>Group</th><th>Min Temp / °C</th><th>Max Temp / °C</th><th>Total Rainfall / mm</th><th>Wind Direction / °</th><th>Wind speed / ms<sup><small>-1</small></sup></th><th>Points</th></tr><?php
 	foreach($forecasts as $forecast)
 	{

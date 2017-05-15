@@ -11,7 +11,7 @@ class Group extends AppModel {
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
+			'order' => 'day ASC',
 			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',

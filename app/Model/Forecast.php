@@ -75,7 +75,7 @@ class Forecast extends AppModel {
 				$forecast['Forecast']['min_temp_points'] = Forecast::min_temp_points($actual[0]['Forecast']['min_temp'],$forecast['Forecast']['min_temp']);
 				$forecast['Forecast']['max_temp_points'] = Forecast::max_temp_points($actual[0]['Forecast']['max_temp'],$forecast['Forecast']['max_temp']);
 				$forecast['Forecast']['wind_speed_points'] = Forecast::wind_speed_points($actual[0]['Forecast']['wind_speed'],$forecast['Forecast']['wind_speed']);
-				$forecast['Forecast']['wind_direction_points'] = Forecast::wind_direction_points($actual[0]['Forecast']['wind_direction'],$forecast['Forecast']['wind_direction']);
+				$forecast['Forecast']['wind_direction_points'] = Forecast::wind_direction_points($actual[0]['Forecast']['wind_direction'],$forecast['Forecast']['wind_direction'], $actual[0]['Forecast']['wind_speed']);
 				$forecast['Forecast']['total_rainfall_points'] = Forecast::total_rainfall_points($actual[0]['Forecast']['total_rainfall'],$forecast['Forecast']['total_rainfall']);
 				$forecast['Forecast']['total_points'] = $forecast['Forecast']['min_temp_points'] + $forecast['Forecast']['max_temp_points'] + $forecast['Forecast']['wind_speed_points'] + $forecast['Forecast']['wind_direction_points'] + $forecast['Forecast']['total_rainfall_points']; 
 		}
@@ -155,30 +155,37 @@ class Forecast extends AppModel {
 		return $points;
 	}
 
-	private function wind_direction_points($actual, $predicted)
+	private function wind_direction_points($actual, $predicted, $actual_speed)
 	{
-		$abs_diff =abs(($actual + 180 -  $predicted) % 360 - 180);
-		$diff = min($abs_diff, 360 - $abs_diff);
-		$points = -2;
-		if( $diff <= 90) {
-			$points = -1;
-			}
-		if( $diff <= 65) {
-			$points = 0;
-			}
-		if( $diff <= 45) {
-			$points = 1;
-			}
-		if( $diff <= 35) {
-			$points = 2;
-			}
-		if( $diff <= 27.5) {
-			$points = 3;
-		}
-		if( $diff <= 22.5) {
-			$points = 4;
-		}
-	
+        if($actual_speed == 0)
+        {
+            #direction is undefined, no points for anyone!
+            $points = 0;
+        }
+        else
+        {
+		    $abs_diff =abs(($actual + 180 -  $predicted) % 360 - 180);
+		    $diff = min($abs_diff, 360 - $abs_diff);
+		    $points = -2;
+		    if( $diff <= 90) {
+			    $points = -1;
+			    }
+		    if( $diff <= 65) {
+			    $points = 0;
+			    }
+		    if( $diff <= 45) {
+			    $points = 1;
+			    }
+		    if( $diff <= 35) {
+			    $points = 2;
+			    }
+		    if( $diff <= 27.5) {
+		    	$points = 3;
+		    }
+		    if( $diff <= 22.5) {
+			    $points = 4;
+		    }
+        }
 		return $points;
 	}
 	private function total_rainfall_points($actual, $predicted)
@@ -215,7 +222,7 @@ class Forecast extends AppModel {
 	static function next_forecast($what)
 	{
 		$next_forecast = array();
-		if(date('H') > 18)
+		if(gmdate('H') > 18)
 		{
 			#it's evening so 1800 the following day
 			$next_forecast['start'] = strtotime('tomorrow 19:00');
