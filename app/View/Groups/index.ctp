@@ -28,5 +28,5 @@ foreach ($groups as $group):
 		<li><?php echo $this->Html->link(__('Add Forecast'), array('controller' => 'forecasts', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Today\'s predictions'), array('controller' => 'forecasts', 'action' => 'today')); ?> </li>
 	</ul>
-    <p>Details of the scoring system are on p36 of your handbook.</p>
+    <p>Details of the scoring system are on p39 of your handbook.</p>
 </div>
