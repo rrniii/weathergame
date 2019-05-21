@@ -514,7 +514,7 @@ div.points {
 }
 div.group {
 	width: 15rem;
-	float: left;
+	display: inline-block;
 	margin: 1em;
 	border: solid 1px #186f4d; 
 	padding: 0rem;
