@@ -49,7 +49,7 @@ class Forecast extends AppModel {
 		)
 	);
 
-	function beforeValidate()
+	function beforeValidate($options = Array())
 	{
 		if($this->data['Forecast']['group_id'] != 10)
 		{

@@ -34,7 +34,7 @@
 
 		echo $this->Html->css('cake.generic');
    ?>
-   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css2?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
    <?php
 		echo $this->Html->script('jquery.min');
 		echo $scripts_for_layout;

@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 from numpy import exp, abs, angle
 import arrow
-import sqlite3
+import pymysql
 
 import sys
 
@@ -15,7 +15,7 @@ if len(sys.argv) >1:
     start_obj = arrow.get(sys.argv[1],'YYYY-MM-DD').replace(hour=18,minute=0,second=0)
 else:
     #default to start yesterday
-    start_obj = arrow.now().replace(days=-1,hour=18,minute=0,second=0)
+    start_obj = arrow.now().shift(days=-1).replace(hour=18,minute=0,second=0)
 
 
 def FtoC(Ftemp):
@@ -33,24 +33,48 @@ def z2polar(x, y):
     phi = np.arctan2(y, x)
     return(rho, np.rad2deg(phi))
 
-sqlfile = "/data/davis/sql/weewx.sdb"
 
-conn = sqlite3.connect(sqlfile)
+sqluser="harrogate"
+sqlpass="scruples65"
+sqldb="harrogatewx"
 
-end_obj = start_obj.replace(hours=+24)
+#sqlfile = "/home/lecjlg/harrogate-wx-station/sourcefile/weewx.sdb"
 
-start = start_obj.timestamp
-end = end_obj.timestamp
-noon = end_obj.replace(hour=12)
+#conn = sqlite3.connect(sqlfile)
+conn = pymysql.connect(
+        host="localhost",
+        user=sqluser,
+        password=sqlpass,
+        database=sqldb
+    )
 
-df = pd.read_sql_query("SELECT * FROM archive WHERE dateTime > %d AND dateTime <= %d" % (start, end), conn, index_col='dateTime', parse_dates={'dateTime':'s'})
+with conn:
 
-#convert to components
-(df['u'], df['v']) = polar2z(df.windSpeed, df.windDir)
+    end_obj = start_obj.shift(hours=+24)
 
-noonperiod = df[noon.replace(minutes=-7, seconds=-30).strftime('%Y-%m-%d %H:%m:%S'):noon.replace(minutes=+7, seconds=+30).strftime('%Y-%m-%d %H:%m:%S')]
+    start = start_obj.timestamp
+    end = end_obj.timestamp
+    noon = end_obj.replace(hour=12)
 
-rho, phi = z2polar(noonperiod.u.mean(), noonperiod.v.mean())
+    df = pd.read_sql_query("SELECT * FROM archive WHERE dateTime > %d AND dateTime <= %d" % (start, end), conn, index_col='dateTime', parse_dates={'dateTime':'s'})
 
-print "INSERT INTO forecasts (day, group_id, min_temp, max_temp, total_rainfall, wind_direction, wind_speed) VALUES (%s, 10, %.1f, %.1f, %.1f, %d, %d) " % (start_obj.strftime('"%Y-%m-%d"'), round(FtoC(df.outTemp.min()) *2.0)/2.0, round(FtoC(df.outTemp.max())*2.0)/2.0, round(df.rain.sum()*25.4*2.0)/2.0, phi, rho)
+    #convert to components
+    (df['u'], df['v']) = polar2z(df.windSpeed, df.windDir)
+
+    noonperiod = df[noon.shift(minutes=-7, seconds=-30).strftime('%Y-%m-%d %H:%m:%S'):noon.shift(minutes=+7, seconds=+30).strftime('%Y-%m-%d %H:%m:%S')]
+
+    rho, phi = z2polar(noonperiod.u.mean(), noonperiod.v.mean())
+
+    gameconn = pymysql.connect(
+        host="localhost",
+        user="measure",
+        password="4measure",
+        database="measurements"
+    )
+
+    with gameconn:
+        sql = "INSERT INTO forecasts (day, group_id, min_temp, max_temp, total_rainfall, wind_direction, wind_speed) VALUES (%s, 10, %.1f, %.1f, %.1f, %d, %d) " % (start_obj.strftime('"%Y-%m-%d"'), round(df.outTemp.min() *2.0)/2.0, round(df.outTemp.max()*2.0)/2.0, round(df.rain.sum()*2.0)/2.0, phi, rho)
+        with gameconn.cursor() as cursor:
+            cursor.execute(sql)
+            gameconn.commit()
 
