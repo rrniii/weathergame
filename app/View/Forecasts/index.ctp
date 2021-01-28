@@ -41,7 +41,7 @@ foreach ($forecasts as $forecast):
 			<?php echo $forecast['Forecast']['total_rainfall']; ?>
 		</td>
 		<td>
-			<?php echo $forecast['Forecast']['wind_direction']; ?>
+			<?php echo (($forecast['Forecast']['wind_direction'] +360)%360); ?>
 		</td>
 		<td>
 			<?php echo $forecast['Forecast']['wind_speed']; ?>

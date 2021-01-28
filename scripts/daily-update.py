@@ -63,7 +63,7 @@ with conn:
 
     noonperiod = df[noon.shift(minutes=-7, seconds=-30).strftime('%Y-%m-%d %H:%m:%S'):noon.shift(minutes=+7, seconds=+30).strftime('%Y-%m-%d %H:%m:%S')]
 
-    rho, phi = z2polar(noonperiod.u.mean(), noonperiod.v.mean())
+    rho, phi = z2polar(noonperiod.u.mean()*0.2778, noonperiod.v.mean()*0.2778)
 
     gameconn = pymysql.connect(
         host="localhost",
@@ -73,8 +73,10 @@ with conn:
     )
 
     with gameconn:
-        sql = "INSERT INTO forecasts (day, group_id, min_temp, max_temp, total_rainfall, wind_direction, wind_speed) VALUES (%s, 10, %.1f, %.1f, %.1f, %d, %d) " % (start_obj.strftime('"%Y-%m-%d"'), round(df.outTemp.min() *2.0)/2.0, round(df.outTemp.max()*2.0)/2.0, round(df.rain.sum()*2.0)/2.0, phi, rho)
+        sql = "INSERT INTO forecasts (day, group_id, min_temp, max_temp, total_rainfall, wind_direction, wind_speed) VALUES (%s, 10, %s, %s, %s, %s, %s) " 
+        data = (start_obj.strftime('%Y-%m-%d'), round(df.outTemp.min() *2.0)/2.0, round(df.outTemp.max()*2.0)/2.0, round(df.rain.sum()*10.0*2.0)/2.0, phi, rho)
+        print(data)
         with gameconn.cursor() as cursor:
-            cursor.execute(sql)
+            cursor.execute(sql, data)
             gameconn.commit()
 
