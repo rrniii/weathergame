@@ -27,11 +27,12 @@
 
 /* General Style Info */
 body {
-	background: #292421;
-	color: #fff;
-	font-family:'Lato','lucida grande',verdana,helvetica,arial,sans-serif;
-	font-size:90%;
-	margin: 0;
+   font-family: "Open Sans",Lato,Calibri,"Nimbus Sans L",sans-serif;
+   background: #186f4d; //NCAS green
+   color: #fff;
+   font-size:90%;
+   text-align: center;
+   margin: 0.6rem;
 }
 a {
 	background:transparent;
@@ -59,14 +60,14 @@ h1 {
 h2 {
 	background:#fff;
 	color: #e32;
-	font-family:'Gill Sans','Lato','lucida grande',helvetica, arial, sans-serif;
+	font-family:'Gill Sans',"Gill Sans MT",'Lato','lucida grande',helvetica, arial, sans-serif;
 	font-size: 190%;
-	margin: 0.3em 0;
+	margin: 1rem 0;
 	padding-top: 0.8em;
 }
 h3 {
 	color: #993;
-	font-family:'Gill Sans','Lato','lucida grande',helvetica, arial, sans-serif;
+	font-family:'Gill Sans',"Gill Sans MT",'Lato','lucida grande',helvetica, arial, sans-serif;
 	font-size: 165%;
 	padding-top: 1.5em;
 }
@@ -81,7 +82,10 @@ ul, li {
 
 /* Layout */
 #container {
-	text-align: left;
+   text-align: left;
+   max-width: 1110px;
+   margin-left: auto;
+   margin-right: auto;
 }
 
 #header{
@@ -103,13 +107,12 @@ ul, li {
 	background: #003d4c;
 	text-decoration: underline;
 }
-#content{
-	background: #fff;
-	clear: both;
-	color: #333;
-	padding: 10px 20px 40px 20px;
-	margin-top: 100px;
-	overflow: auto;
+#content, #logo{
+   border: solid 1px #000;
+    -moz-border-radius: 15px;
+   border-radius: 15px;
+   background-color: #fff;
+   padding-left: 5px;
 }
 #footer {
 	clear: both;
@@ -510,10 +513,11 @@ div.points {
 	background-color: #f00;
 }
 div.group {
-	width: 15em;
-	float: left;
+	width: 15rem;
+	display: inline-block;
 	margin: 1em;
 	border: solid 1px #186f4d; 
+	padding: 0rem;
 }
 div.group h4 a {
    color: #fff;
@@ -522,29 +526,30 @@ div.group a:hover {
 	color: #008d9c;
 }
 div.group h4 {
-	width: 100%;
 	background-color: #186f4d; 
 	color: #fff;
+	padding: 0.25rem 0.5rem;
 }	
 div.group h5 {
-	width: 100%;
 	color: #555;
 	text-align: right;
+	padding: 0.25rem 0.5rem;
 }	
 div.groupsindex {
-	width: 60em;
+	width: inherit;
+	min-height: 60vh;
 }
 div#logo {
-background:url("/measurements/img/9-transparent-ncas-logo-png") no-repeat scroll 0 0 transparent;
-float:left;
-height:75px;
-left:0;
-margin-left:30px;
-margin-top:20px;
-position:absolute;
-top:0;
+   background: url("/raine/img/NCAS_national_centre_logo.svg") no-repeat left center #fff;
+   background-size: 20rem;
+   background-origin: content-box;
+   height: 6rem;
+   padding-left: 1rem;
+   vertical-align: middle;
+   margin-bottom: 1rem;
+   font-family: "Gill Sans","Gill Sans MT",Lato,Calibri,"Nimbus Sans L",sans-serif;
 }
 div#logo h3 {
-	padding-left: 400px;
-	color: #ccc;
+	padding-left: 21rem;
+	color: #aaa;
 }

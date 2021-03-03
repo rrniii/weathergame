@@ -49,7 +49,7 @@ class Forecast extends AppModel {
 		)
 	);
 
-	function beforeValidate()
+	function beforeValidate($options = Array())
 	{
 		if($this->data['Forecast']['group_id'] != 10)
 		{
@@ -222,7 +222,7 @@ class Forecast extends AppModel {
 	static function next_forecast($what)
 	{
 		$next_forecast = array();
-		if(gmdate('H') > 18)
+		if(gmdate('H') > 21) #give some grace in timing
 		{
 			#it's evening so 1800 the following day
 			$next_forecast['start'] = strtotime('tomorrow 19:00');

@@ -34,8 +34,9 @@
 
 		echo $this->Html->css('cake.generic');
    ?>
-   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css' />
-   <?
+	<link href='http://fonts.googleapis.com/css2?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
+   <?php
+		echo $this->Html->script('jquery.min');
 		echo $scripts_for_layout;
 	?>
 </head>
@@ -52,12 +53,6 @@
 
 		</div>
 		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt'=> __("CakePHP: the rapid development php framework"), 'border'=>"0")),
-					'http://www.cakephp.org/',
-					array('target'=>'_blank'), null, false
-				);
-			?>
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>

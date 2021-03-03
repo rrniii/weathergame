@@ -3,3 +3,8 @@
    RewriteRule    ^$ app/webroot/    [L]
    RewriteRule    (.*) app/webroot/$1 [L]
 </IfModule>
+
+Authtype Basic
+AuthName "Weather Game"
+AuthUserFile /var/www/html/weathergame/.htpasswd
+Require valid-user
