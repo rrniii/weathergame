@@ -34,22 +34,20 @@ def z2polar(x, y):
     phi = np.arctan2(y, x)
     return(rho, np.rad2deg(phi))
 
-#curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer eyJrIjoiNUpuYWtGbEozdkFpYTZEaFlHdDJvYUJKYXpoV1NCcWIiLCJuIjoid2VhdGhlcmdhbWUiLCJpZCI6MX0=" --data-binary @post-data http://192.171.139.98:3000/api/tsdb/query
+end_obj = start_obj.shift(hours=+24)
+
+start = start_obj.timestamp
+end = end_obj.timestamp
+noon = end_obj.replace(hour=12)
 
 dataurl = "http://192.171.139.98:3000/api/tsdb/query"
 dataheaders = {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer eyJrIjoiNUpuYWtGbEozdkFpYTZEaFlHdDJvYUJKYXpoV1NCcWIiLCJuIjoid2VhdGhlcmdhbWUiLCJpZCI6MX0='
               }
-datapayload = '{"from":"1614773709344","to":"1614860109344","queries":[{"refId":"A","intervalMs":60000,"maxDataPoints":1031,"datasourceId":2,"rawSql":"select from_unixtime(dateTime), outHumidity, outTemp, rain, rainRate, windDir,windSpeed, windGustDir, windGust FROM archive  WHERE dateTime <= UNIX_TIMESTAMP(DATE_FORMAT(NOW(),\'%Y-%m-%d 18:00\')) AND dateTime > UNIX_TIMESTAMP(DATE_SUB(DATE_FORMAT(NOW(),\'%Y-%m-%d 18:00\'), INTERVAL 24 HOUR)) ORDER BY dateTime;","format":"table"}]}'
+datapayload = '{"from":"%s","to":"%s","queries":[{"refId":"A","intervalMs":60000,"maxDataPoints":1031,"datasourceId":2,"rawSql":"select from_unixtime(dateTime), outHumidity, outTemp, rain, rainRate, windDir,windSpeed, windGustDir, windGust FROM archive  WHERE $__unixEpochFilter(dateTime) ORDER BY dateTime;","format":"table"}]}' % (start*1000, end*1000)
 
 with requests.post(dataurl, headers=dataheaders, data=datapayload) as conn: 
-
-    end_obj = start_obj.shift(hours=+24)
-
-    start = start_obj.timestamp
-    end = end_obj.timestamp
-    noon = end_obj.replace(hour=12)
 
     #df = pd.read_sql_query("SELECT * FROM archive WHERE dateTime > %d AND dateTime <= %d" % (start, end), conn, index_col='dateTime', parse_dates={'dateTime':'s'})
     data = conn.json()
