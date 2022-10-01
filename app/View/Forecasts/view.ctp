@@ -45,11 +45,11 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Forecast'), array('action' => 'edit', $forecast['Forecast']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Delete Forecast'), array('action' => 'delete', $forecast['Forecast']['id']), null, sprintf(__('Are you sure you want to delete # %s?'), $forecast['Forecast']['id'])); ?> </li>
+		#<li><?php echo $this->Html->link(__('Edit Forecast'), array('action' => 'edit', $forecast['Forecast']['id'])); ?> </li>
+		#<li><?php echo $this->Html->link(__('Delete Forecast'), array('action' => 'delete', $forecast['Forecast']['id']), null, sprintf(__('Are you sure you want to delete # %s?'), $forecast['Forecast']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Forecasts'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Forecast'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Group'), array('controller' => 'groups', 'action' => 'add')); ?> </li>
+		#<li><?php echo $this->Html->link(__('New Group'), array('controller' => 'groups', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

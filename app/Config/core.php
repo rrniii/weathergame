@@ -34,7 +34,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-if ( isset($_SERVER['SERVER_NAME']) && ($_SERVER['SERVER_NAME'] == 'sci.ncas.ac.uk' OR $_SERVER['SERVER_NAME'] == 'ncas-field6' ))
+if ( isset($_SERVER['SERVER_NAME']) && ($_SERVER['SERVER_NAME'] == 'sci.ncas.ac.uk' OR $_SERVER['SERVER_NAME'] == 'leeds-field-course-hub.org' ))
 {
    #is live
 	Configure::write('debug', 0);

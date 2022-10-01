@@ -35,7 +35,8 @@ CREATE TABLE `groups` (
 
 LOCK TABLES `groups` WRITE;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
-INSERT INTO `groups` VALUES (1,'Ekman'),(2,'FitzRoy'),(3,'Hadley'),(4,'Rossby'),(6,'BBC'),(7,'WRF'),(8,'Staff'),(10,'Actual');
+/* All Groups INSERT INTO `groups` VALUES (1,'Fibratus'),(2,'Lenticularis'),(3,'Stratiformis'),(4,'Spissatus'),(5,'Uncinus'),(6,'Humilis'),(7,'Castellanus'),(8,'Mediocris'),(9,'Calvus'),(21,'Capillatus'),(11,'Intortus'),(22,'Floccus'),(23,'Fractus'), (24,'Volutus'),(15,'Nebulosus'),(16,'Congestus'),(17,'Undulatus'),(18,'Radiatus'),(19,'Vertebratus'), (20,'Lacunosus'), (10,'Actual'),(12,'Staff'),(13,'Percy Persistence'),(14,'Enola Ensemble'); */
+INSERT INTO `groups` VALUES (1,'Fibratus'),(2,'Lenticularis'),(3,'Stratiformis'),(4,'Spissatus'),(5,'Uncinus'),(6,'Humilis'),(7,'Castellanus'),(22,'Floccus'),(23,'Fractus'), (24,'Volutus'),(15,'Nebulosus'),(16,'Congestus'),(17,'Undulatus'),(18,'Radiatus'),(19,'Vertebratus'), (20,'Lacunosus'), (10,'Actual'),(12,'Staff'),(13,'Percy Persistence'),(14,'Enola Ensemble');
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

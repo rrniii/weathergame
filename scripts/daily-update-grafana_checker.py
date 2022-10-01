@@ -19,15 +19,15 @@ test=False
 
 if len(sys.argv) >1:
     #date specified
-    start_obj = arrow.get(sys.argv[1],'YYYY-MM-DD').replace(hour=17,minute=30,second=0)
-    verf_obj = arrow.get(sys.argv[1],'YYYY-MM-DD').shift(days=-1).replace(hour=17,minute=30,second=0)
-    day_before_obj = arrow.get(sys.argv[1],'YYYY-MM-DD').shift(days=-2).replace(hour=17,minute=30,second=0)
+    start_obj = arrow.get(sys.argv[1],'YYYY-MM-DD').replace(hour=16,minute=45,second=0)
+    verf_obj = arrow.get(sys.argv[1],'YYYY-MM-DD').shift(days=-1).replace(hour=16,minute=45,second=0)
+    day_before_obj = arrow.get(sys.argv[1],'YYYY-MM-DD').shift(days=-2).replace(hour=16,minute=45,second=0)
 
 else:
     #default to start yesterday
-    start_obj = arrow.now().shift(days=-1).replace(hour=17,minute=30,second=0)
-    verf_obj = arrow.now().shift(days=-2).replace(hour=17,minute=30,second=0)
-    day_before_obj = arrow.now().shift(days=-3).replace(hour=17,minute=30,second=0)
+    start_obj = arrow.now().shift(days=-1).replace(hour=16,minute=45,second=0)
+    verf_obj = arrow.now().shift(days=-2).replace(hour=16,minute=45,second=0)
+    day_before_obj = arrow.now().shift(days=-3).replace(hour=16,minute=45,second=0)
 
 def FtoC(Ftemp):
     '''converts absolute temp in °F to °C'''
@@ -46,7 +46,7 @@ def polar2z(rho,phideg):
 def z2polar(x, y):
     rho = np.sqrt(x**2 + y**2)
     phi = np.arctan2(y, x)
-    return(rho, np.rad2deg(phi))
+    return(rho, np.rad2deg(phi)-180) # 180 degree offset for Dale Fort Station
 
 end_obj = start_obj.shift(hours=+24)
 day_before_end_obj = day_before_obj.shift(hours=+24)

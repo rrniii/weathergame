@@ -39,5 +39,5 @@ foreach ($groups as $group):
 		<li><?php echo $this->Html->link(__('Add Forecast'), array('controller' => 'forecasts', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Today\'s predictions'), array('controller' => 'forecasts', 'action' => 'today')); ?> </li>
 	</ul>
-    <p>Details of the scoring system may be  found in the Weather Section of the Google Classroom.</p>
+    <p>Details of the scoring system and deadlines may be found in the handbook.</p>
 </div>
