@@ -16,7 +16,7 @@ foreach ($groups as $group):
 ?>
 	<div class="group" data-sort="<?php echo $total_pts; ?>">
 		<h4>
-			<?php echo $this->Html->link($group['Group']['name'],array('controller' => 'groups', 'action' => 'edit', $group['Group']['id'])); ?>
+			<?php echo $this->Html->link($group['Group']['name'],array('controller' => 'groups', 'action' => 'view', $group['Group']['id'])); ?>
 		</h4>
 		<p><ul>
 		<?php foreach($group['Forecast'] as $forecast)
